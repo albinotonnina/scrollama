@@ -68,7 +68,11 @@ function scrollama() {
       callback.stepExit(resp);
 
     if (progressMode) {
-      if (direction === 'down') notifyStepProgress(element, 1);
+      if (direction === 'down') {
+        if(stepStates[index + 1] && stepStates[index + 1].state === null){
+          notifyStepProgress(element, 1);
+        } 
+      }
       else notifyStepProgress(element, 0);
     }
   }
